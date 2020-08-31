@@ -12,13 +12,13 @@ Amadeus for Developers provides a `Test Environment` with limited data collectio
 | `Flight Cheapest Date Search` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/flightsearch.md) |
 | `Flight Offers Search` |  Cached data including most origin and destination cities/airports|
 | `Flight Offers Price` | Cached data including most origin and destination cities/airports|
-| `SeatMap Display` | Works with the response of `Flight Offers Search`.|
-| `Flight Create Orders` | Works with the response of `Flight Offers Price`. |
-| `Flight Order Management` | Works with the response of `Flight Create Orders`. |
+| `SeatMap Display` | Works with the response of `Flight Offers Search`|
+| `Flight Create Orders` | Works with the response of `Flight Offers Price` |
+| `Flight Order Management` | Works with the response of `Flight Create Orders` |
 | `Flight Delay Prediction` | No data restrictions in test |
 | `Airport On-time Performance` | No data restrictions in test |
 | `Flight Choice Prediction` | No data restrictions in test |
-| `On Demand Flight Status` |  |
+| `On Demand Flight Status` | Cached data including most flights returned by `Flight Offers Search` |
 | `Flight Most Traveled Destinations` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/ti.md) |
 | `Flight Busiest Traveling Period` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/ti.md)  |
 | `Flight Most Booked Destinations` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/ti.md)  |
