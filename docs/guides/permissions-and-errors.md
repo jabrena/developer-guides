@@ -6,8 +6,8 @@ Amadeus for Developers Self-Service APIs use HTTP status codes to communicate wh
 
 There two main types of errors are:
 
-* Client: these typically occur when the request has not been properly built. 
-* Server: these occur when there is an issue on the server side and should be reported.
+* **Client**:  typically occur when the request has not been properly built. 
+* **Server**: occur when there is an issue on the server side.
 
 ## Client errors
 
@@ -30,7 +30,7 @@ Occurs when using a grant type other than `client credentials`. For more informa
 
 **401 Unauthorized - Invalid access token**
 
-The access token provided in the Authorization header is expired or not longer valid, and you must generate a new token.
+The access token provided in the Authorization header is expired or not longer valid. You must generate a new token.
 
 ```json
 {
@@ -48,7 +48,7 @@ The access token provided in the Authorization header is expired or not longer v
 
 **401 Unauthorized -  Invalid client**
 
-The client credentials have invalid format and are not recognized.
+The client credentials have an invalid format and are not recognized.
 
 ```json
 {
@@ -63,7 +63,7 @@ The client credentials have invalid format and are not recognized.
 
 **400 Bad request - Invalid format**
 
-An input query parameter is incorrect. For example, the Airport & City Search API expects a location parameter in the expected IATA standard.
+An input query parameter is incorrect. In the example below, the Airport & City Search API returns an error because the location parameter is not in the expected IATA standard.
 
 ```json
 {
@@ -85,7 +85,7 @@ An input query parameter is incorrect. For example, the Airport & City Search AP
 
 **404 Not found - Resource not found**
 
-The endpoint or URL does not exists. Make sure you are calling a valid endpoint and that it is spelled correctly.
+The endpoint or URL does not exists. Make sure you are calling a valid endpoint and that there are no spelling errors.
 
 ```json
 {

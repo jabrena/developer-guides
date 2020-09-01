@@ -1,33 +1,17 @@
 # Authorization
 
-This guide will explain the authorization processes required to access Amadeus Self-Service APIs.
-
-## Overview
-
-The basic authorization process is:
-
-1. [Create an account](https://developers.amadeus.com/register) on the Amadeus for Developers portal
-2. Create an application
-3. Get an `API Key` and `API Secret`
-4. Call the authorization server to generate an access token
-5. Use the access token to authenticate requests to Amadeus Self-Service APIs
-
-!!!information
-    Remember that your `API Key` and  `API Secret` should be kept private. Read more about best practices for [secure API key storage](https://developers.amadeus.com/blog/best-practices-api-key-storage).
-
-The current guide covers steps 4 and 5 of the authorization process.
-
-## What is OAuth?
-
 Amadeus for Developers uses `OAuth` to authenticate access requests. `OAuth` generates an `access token` which grants the client permission to access a protected resource. 
 
 The method to acquire a token is called **grant**. There are different types of `OAuth grants`. Amadeus for Developers uses the `Client Credentials Grant`.
 
-## Requesting an acces token
+## Requesting an access token
 
 Once you have created an app and received your `API Key` and  `API Secret`, you can generate an access token by sending a `POST` request to the authorization server:
 
 [https://test.api.amadeus.com/v1/security/oauth2/token/](https://test.api.amadeus.com/v1/security/oauth2/token/)
+
+!!!information
+    Remember that your `API Key` and  `API Secret` should be kept private. Read more about best practices for [secure API key storage](https://developers.amadeus.com/blog/best-practices-api-key-storage).
 
 The body of the request is encoded as `x-www-form-urlencoded`, where the keys and values are encoded in key-value tuples separated by '&', with a '=' between
 the key and the value:
@@ -38,9 +22,9 @@ the key and the value:
 | `client_id`       | The `API Key` for the application     |
 | `client_secret`   | The `API Secret` for the application  |
 
-We also need to specify the type of the request using the `content-type` HTTP header with the value `application/x-www-form-urlencoded`.
+Specify the type of the request using the `content-type` HTTP header with the value `application/x-www-form-urlencoded`.
 
-The following example uses `cURL` to request a new token, sending the body and the headers as described:
+The following example uses `cURL` to request a new token:
 
 ```bash
 curl "https://test.api.amadeus.com/v1/security/oauth2/token" \
@@ -49,9 +33,9 @@ curl "https://test.api.amadeus.com/v1/security/oauth2/token" \
 ```
 Note that the `-X POST` parameter is not needed in the `cURL` command. As we are sending a body, `cURL` sends the request as `POST` automatically.
 
-### Understanding the response
+## Response
 
-The authorization server responds with a JSON object like this one:
+The authorization server will respond with a JSON object:
 
 ```javascript
 {
@@ -66,14 +50,14 @@ The authorization server responds with a JSON object like this one:
     "scope": ""
 }
 ```
-Let's take a look to the parameters:
+The response will contain the following parameters:
 
 | Parameter      | Description |
 | ----------- | ----------- |
-| `type`      | The type of the resource. This value will be `amadeusOAuth2Token`. |
-| `username`       | Your username \(email address\)        |
+| `type`      | The type of resource. The value will be `amadeusOAuth2Token`. |
+| `username`       | Your username \(email address\).        |
 | `application_name`   | The name of your application.  |
-| `client_id`      |  The `API Key` for the application  |
+| `client_id`      |  The `API Key` for your application  |
 | `token_type`       | The type of token issued by the authentication server. The value will be `Bearer`.        |
 | `access_token`   | The token to authenticate your requests.  |
 | `expires_in`   | The number of seconds until the token expires.  |
@@ -85,7 +69,7 @@ Once the token has been retrieved, you can authenticate your requests to Amadeus
 
 Each API call must contain the `authorization` HTTP header with the value `Bearer {access_token}`, where `acess_token` is the token you have just retrieved.
 
-The following example calls to the `Flight Check-in Links` API to retrieve the check-in URL for Iberia \(`IB`\):
+The following example is a call to the `Flight Check-in Links` API to retrieve the check-in URL for Iberia \(`IB`\):
 
 ```bash
 curl "https://test.api.amadeus.com/v2/reference-data/urls/checkin-links?airline=IB" \
@@ -94,20 +78,15 @@ curl "https://test.api.amadeus.com/v2/reference-data/urls/checkin-links?airline=
 
 ## Managing tokens from your source code
 
-The process to retrieve a token using your favourite programming language is
-similar to the `cURL` examples described above: send a `POST` request and parse
-the `JSON` response. The only thing you need to take into consideration is the
-expiration time of the token. There are different strategies to keep your token
-updated: check the remaining time before each API call or capture the
-`unauthorized` error when the token expires. In both cases you will need to
-request a new token.
+To retrieve a token using your favourite programming language, send a `POST` request and parse the `JSON` response as in the `cURL` examples above.  
 
-In order to simplify the authentication process implementation, you can use any
-of the [SDKs](https://github.com/amadeus4dev) available on GitHub. The `SDKs`
+There are different strategies to maintain your token updated, like checking the time remaining until expiration before each API call or capturing the `unauthorized` error when the token expires. In both cases, you must request a new token.
+
+To simplify managing the authentication process, you can use the [Amadeus for Developers SDKs](https://github.com/amadeus4dev) available on GitHub. The `SDKs`
 automatically fetch and store the `access_token` and set the headers in all API
 calls.
 
-Example of how to initialize the client and authenticate with the `Node` SDK:
+Example of initializing the client and authenticating with the `Node` SDK:
 
 ```javascript
 var Amadeus = require('amadeus');
@@ -118,7 +97,7 @@ var amadeus = new Amadeus({
 });
 ```
 
-You can then call the API. Example call to the `Flight Check-in Links` API to retrieve thecheck-in URL for Iberia \(`IB`\):
+You can then call the API. The following example is a call to the `Flight Check-in Links` API to retrieve the check-in URL for Iberia \(`IB`\):
 
 
 ```javascript

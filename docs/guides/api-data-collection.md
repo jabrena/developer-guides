@@ -1,12 +1,12 @@
 # Test data collections
 
-Amadeus for Developers provides a `Test Environment` with limited data collections to build and test your applications. To access live data, you must move to `Production Environment`.
+To build and test your applications, Amadeus for Developers provides a `Test Environment` with limited data collections. To access live data, you must move to `Production Environment`. The table below details the test data collection for each Self-Service API.
 
 
 
 ## Air
 
-| API      | Test data collection |
+| API      | Test data |
 | :----------- | :----------- |
 | `Flight Inspiration Search` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/flightsearch.md) |
 | `Flight Cheapest Date Search` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/flightsearch.md) |
@@ -22,7 +22,7 @@ Amadeus for Developers provides a `Test Environment` with limited data collectio
 | `Flight Most Traveled Destinations` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/ti.md) |
 | `Flight Busiest Traveling Period` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/ti.md)  |
 | `Flight Most Booked Destinations` | See list of [origin and destination cities/airports](https://github.com/amadeus4dev/data-collection/blob/master/data/ti.md)  |
-| `Airline Code Lookup` | No data restrictions in test. |
+| `Airline Code Lookup` | No data restrictions in test |
 | `Airport & City Search` | Cities/airports in the United States, Spain, the United Kingdom, Germany and India |
 | `Airport Nearest Relevant` | Cities/airports in the United States, Spain, the United Kingdom, Germany and India |
 | `Flight Check-in Links` | See list of [valid airlines](https://github.com/amadeus4dev/data-collection/blob/master/data/checkinlinks.md) |
@@ -31,7 +31,7 @@ Amadeus for Developers provides a `Test Environment` with limited data collectio
 
 
 ## Hotel
-| API          | Test data collection |
+| API          | Test data |
 | :----------- | :----------- |
 | `Hotel Search`| See list of [valid hotel chains](https://github.com/amadeus4dev/data-collection/blob/master/data/hotelchains.md). Content is provided directly by hotels and can change dynamically. Test with big cities like `LON` (London) or `NYC` (New-York).|
 | `Hotel Booking` | Works with the response of `Hotel Search` |
@@ -41,7 +41,7 @@ Amadeus for Developers provides a `Test Environment` with limited data collectio
 
 
 ## Destination Content
-| API      | Test data collection |
+| API      | Test data |
 | ----------- | ----------- |
 | `Safe Place` | See list of [valid cities](https://github.com/amadeus4dev/data-collection/blob/master/data/pois.md)|
 | `Points Of Interest` | See list of [valid cities](https://github.com/amadeus4dev/data-collection/blob/master/data/pois.md)|
@@ -49,7 +49,7 @@ Amadeus for Developers provides a `Test Environment` with limited data collectio
 
 
 ## Trip
-| API      | Test data collection |
+| API      | Test data |
 | ----------- | ----------- |
 | `Trip Parser` | No data restrictions in test |
 | `Trip Purpose Prediction` | No data restrictions in test |
